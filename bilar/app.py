@@ -31,7 +31,7 @@ while looping:
     lager_string = str(lager_int)
 
     if lager_int > 0:
-        print(f"\nEn {billista[bil_nr_int-1].color} {billista[bil_nr_int-1].fabrikat} kommer här!")
+        print(f"\nEn {billista[bil_nr_int-1].color} {billista[bil_nr_int-1].fabrikat} kommer här! \n\t")
 
         #minskar saldo på lager
         nytt_lagersaldo_int = lager_int - 1
