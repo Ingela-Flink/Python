@@ -18,15 +18,13 @@ while play == True:
             print(f"Your new balance is {new_balance}")
 
 
-
-
-
     def create_deck():
         ranks = ['2', '3', '4', '5', '6', '7', '8', '9', '10', 'J', 'Q', 'K', 'A']
         suits = ['Hearts', 'Diamonds', 'Clubs', 'Spades']
         deck = [{'rank': rank, 'suit': suit} for rank in ranks for suit in suits]
         random.shuffle(deck)
         return deck
+        
 
     def calculate_score(hand):
         score = sum([11 if card['rank'] == 'A' else 10 if card['rank'] in ['K', 'Q', 'J'] else int(card['rank']) for card in hand])
@@ -50,14 +48,10 @@ while play == True:
     def blackjack():
         global balance
 
-
-
-
-
-        
         player_hand = []
         dealer_hand = []
         deck = create_deck()
+
 
         for _ in range(2):
             player_hand.append(deck.pop())
@@ -66,9 +60,17 @@ while play == True:
         player_score = calculate_score(player_hand)
         dealer_score = calculate_score(dealer_hand)
 
+
         game_over = False
 
         while not game_over:
+            total_cards = 0
+            for card in player_hand:
+                total_cards += 1
+            if total_cards == 2 and player_hand.count(card['rank']) == 2: ---------------------------------HJÄLP!----------------
+                print("JAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA!")
+
+            
             display_board(player_hand, dealer_hand, player_score, dealer_score)
 
             if player_score == 0 or dealer_score == 0 or player_score > 21:
@@ -86,6 +88,7 @@ while play == True:
             dealer_score = calculate_score(dealer_hand)
 
         display_board(player_hand, dealer_hand, player_score, dealer_score, True)
+
 
         if player_score > 21:
             print("You went over. You lose.")
